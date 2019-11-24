@@ -3,7 +3,7 @@ import { IonApp } from '@ionic/react';
 import { Provider } from 'react-redux';
 
 import { Router } from '../Router';
-import { store } from '../../redux';
+import { store } from '../../redux/store';
 
 export const App = () => (
   <Provider store={store}>
