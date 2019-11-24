@@ -5,7 +5,6 @@ import { Route } from "react-router-dom"
 
 import { ProtectedRoute } from "./ProtectedRoute";
 import { TODOLIST_ROUTE, LOGIN_ROUTE, SIGNUP_ROUTE } from "../../constants/routes";
-
 import { SignupPage, LoginPage, TodoListPage } from "../../pages";
 
 export const Router = () => (
