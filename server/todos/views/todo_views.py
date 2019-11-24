@@ -10,3 +10,8 @@ class TodoListView(APIView):
         todos = Todo.objects.filter(owner=request.user.pk)
         serializer = TodoSerializer(todos, many=True)
         return Response(serializer.data, HTTP_200_OK)
+
+    def post(self, request, format=None):
+        serializer = TodoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(owner=)
