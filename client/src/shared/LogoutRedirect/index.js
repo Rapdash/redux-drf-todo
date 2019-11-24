@@ -5,7 +5,6 @@ import { LOGIN_ROUTE } from "../../constants/routes";
 
 const LogoutRedirectBase = () => {
     // TODO: Should log the user out once redux is set up
-    const logout = () => {};
     return <Redirect to={LOGIN_ROUTE} />
 }
 
