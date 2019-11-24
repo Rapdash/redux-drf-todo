@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import * as serviceWorker from './serviceWorker';
-import { App } from './core/App';
-
 import "@ionic/react/css/ionic.bundle.css";
+
+import { App } from './core/App';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
