@@ -1,6 +1,6 @@
 import React from "react";
-import { Provider } from "react-redux";
 import { IonApp } from "@ionic/react";
+import { Provider } from "react-redux";
 
 import { Router } from "../Router";
 
