@@ -22,6 +22,9 @@ export const attemptLogin = (username, password) => (dispatch, getState) => {
     })
     .catch(error => {
       console.log(error);
-      dispatch({ type: LOGIN_FAILURE, payload: { error } });
+      dispatch({
+        type: LOGIN_FAILURE,
+        payload: { error: error.response.data }
+      });
     });
 };
