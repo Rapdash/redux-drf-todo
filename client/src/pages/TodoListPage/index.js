@@ -16,7 +16,12 @@ import {
 } from '@ionic/react';
 import { connect } from 'react-redux';
 
-import { getTodos, addTodo } from '../../redux/actions/todoActions';
+import {
+  getTodos,
+  addTodo,
+  deleteTodo,
+  checkOffTodo
+} from '../../redux/actions/todoActions';
 import { TodoCard } from './TodoCard';
 
 const renderTodoCards = list => {
@@ -95,7 +100,9 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   doGetTodos: token => dispatch(getTodos(token)),
-  doAddTodo: (title, body, token) => dispatch(addTodo(title, body, token))
+  doAddTodo: (title, body, token) => dispatch(addTodo(title, body, token)),
+  doCheckOffTodo: (todo, token) => dispatch(checkOffTodo(todo, token)),
+  doDeleteTodo: (todo, token) => dispatch(deleteTodo(todo, token))
 });
 
 export const TodoListPage = connect(mapState, mapDispatch)(TodoListPageBase);
