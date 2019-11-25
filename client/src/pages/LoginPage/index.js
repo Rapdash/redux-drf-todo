@@ -52,7 +52,7 @@ const LoginPageBase = ({ token, loading, error, doAttemptLogin }) => {
                 <IonInput
                   type='text'
                   value={username}
-                  onChange={e => setUsername(e.target.value)}
+                  onInput={e => setUsername(e.target.value)}
                 />
               </IonItem>
               <IonItem>
@@ -62,7 +62,7 @@ const LoginPageBase = ({ token, loading, error, doAttemptLogin }) => {
                 <IonInput
                   type='password'
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onInput={e => setPassword(e.target.value)}
                 />
               </IonItem>
               {error && <IonItem color='danger'>{error.message}</IonItem>}
