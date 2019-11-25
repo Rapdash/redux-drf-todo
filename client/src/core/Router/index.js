@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
@@ -8,7 +8,8 @@ import { SignupPage, LoginPage, TodoListPage } from '../../pages';
 import {
   TODOLIST_ROUTE,
   LOGIN_ROUTE,
-  SIGNUP_ROUTE
+  SIGNUP_ROUTE,
+  INDEX_ROUTE
 } from '../../constants/routes';
 
 export const Router = () => (
@@ -17,6 +18,11 @@ export const Router = () => (
       <Route path={LOGIN_ROUTE} component={LoginPage} />
       <Route path={SIGNUP_ROUTE} component={SignupPage} />
       <ProtectedRoute path={TODOLIST_ROUTE} component={TodoListPage} />
+      <Route
+        path={INDEX_ROUTE}
+        exact
+        render={<Redirect to={TODOLIST_ROUTE} />}
+      />
     </IonRouterOutlet>
   </IonReactRouter>
 );
