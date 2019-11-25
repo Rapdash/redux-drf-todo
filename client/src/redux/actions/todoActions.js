@@ -19,7 +19,8 @@ export const addTodo = (title, body, token) => (dispatch, getState) => {
     method: 'POST',
     body: JSON.stringify({ body, title }),
     headers: {
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json'
     }
   })
     .then(res => {
