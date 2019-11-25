@@ -17,7 +17,7 @@ const initialState = {
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TODOS_SUCCESS:
-      return Object.assign({}, { error: null, list: action.payload.list });
+      return Object.assign({}, { error: null, list: action.payload.todos });
 
     case GET_TODOS_FAILURE:
       return Object.assign({}, { error: action.payload.error, list: [] });
