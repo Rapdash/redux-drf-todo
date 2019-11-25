@@ -51,6 +51,7 @@ export const todoReducer = (state = initialState, action) => {
 
     case CHECK_OFF_FAILURE:
       return Object.assign({}, { ...state, error: action.payload.error });
+
     default:
       return state;
   }
