@@ -12,17 +12,15 @@ import {
   INDEX_ROUTE
 } from '../../constants/routes';
 
+const TodoRedirect = () => <Redirect to={TODOLIST_ROUTE} />;
+
 export const Router = () => (
   <IonReactRouter>
     <IonRouterOutlet>
+      <Route path={INDEX_ROUTE} exact component={TodoRedirect} />
       <Route path={LOGIN_ROUTE} component={LoginPage} />
       <Route path={SIGNUP_ROUTE} component={SignupPage} />
       <ProtectedRoute path={TODOLIST_ROUTE} component={TodoListPage} />
-      <Route
-        path={INDEX_ROUTE}
-        exact
-        render={<Redirect to={TODOLIST_ROUTE} />}
-      />
     </IonRouterOutlet>
   </IonReactRouter>
 );
