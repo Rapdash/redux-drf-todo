@@ -13,9 +13,10 @@ export const addTodo = (title, body, token) => (dispatch, getState) => {
   console.log(getState());
   fetch('http://localhost:8000', {
     method: 'POST',
-    body: { body, title },
+    body: JSON.stringify({ body, title }),
     headers: {
-      Authorization: 'Bearer ' + token
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json'
     }
   })
     .then(res => {
