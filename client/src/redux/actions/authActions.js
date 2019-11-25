@@ -3,10 +3,11 @@ import Axios from 'axios';
 import {
   LOGIN_ATTEMPT,
   LOGIN_FAILURE,
-  LOGIN_SUCCESS,
-  SIGNUP_ATTEMPT,
-  SIGNUP_FAILURE,
-  SIGNUP_SUCCESS
+  LOGIN_SUCCESS
+  // TODO: Implement Signup routes for users on the backend.
+  // SIGNUP_ATTEMPT,
+  // SIGNUP_FAILURE,
+  // SIGNUP_SUCCESS
 } from '../constants/authConstants';
 
 export const attemptLogin = (username, password) => (dispatch, getState) => {
