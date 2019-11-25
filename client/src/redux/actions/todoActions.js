@@ -15,7 +15,7 @@ import {
 
 export const addTodo = (title, body, token) => (dispatch, getState) => {
   console.log(getState());
-  fetch('http://localhost:8000', {
+  fetch('https://fathomless-forest-63964.herokuapp.com/', {
     method: 'POST',
     body: JSON.stringify({ body, title }),
     headers: {
@@ -34,7 +34,7 @@ export const addTodo = (title, body, token) => (dispatch, getState) => {
 };
 
 export const getTodos = token => (dispatch, getState) => {
-  fetch('http://localhost:8000', {
+  fetch('https://fathomless-forest-63964.herokuapp.com/', {
     headers: { Authorization: 'Bearer ' + token }
   })
     .then(res => {
@@ -48,7 +48,7 @@ export const getTodos = token => (dispatch, getState) => {
 };
 
 export const checkOffTodo = (todo, token) => (dispatch, getState) => {
-  fetch(`http://localhost:8000/${todo.id}`, {
+  fetch(`https://fathomless-forest-63964.herokuapp.com/${todo.id}`, {
     method: 'PUT',
     body: JSON.stringify({ ...todo, checked_off: !todo.checked_off }),
     headers: {
@@ -67,7 +67,7 @@ export const checkOffTodo = (todo, token) => (dispatch, getState) => {
 };
 
 export const deleteTodo = (todo, token) => (dispatch, getState) => {
-  fetch(`http://localhost:8000/${todo.id}`, {
+  fetch(`https://fathomless-forest-63964.herokuapp.com/${todo.id}`, {
     method: 'DELETE',
     headers: { Authorization: 'Bearer ' + token }
   })

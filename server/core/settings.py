@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'sfn;lkwjfiqowljkipqwkljfnmoqweiljfnipvmejfmnoiwegin2mewilkgleqjfnipq;jem'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,9 +92,13 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+dj_database_url = os.environ.get('DATABASE_URL')
+DATABASES = {
+    'default': {
+        
+    }
+}
+DATABASES['default'] = dj_database_url
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
