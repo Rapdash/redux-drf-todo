@@ -28,6 +28,14 @@ const LoginPageBase = ({ token, error, doAttemptLogin }) => {
   const [password, setPassword] = useState('');
 
   if (token) return <Redirect to={TODOLIST_ROUTE} />;
+
+  const logIn = e => {
+    e.preventDefault();
+    doAttemptLogin(username, password);
+    setUsername('');
+    setPassword('');
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -44,36 +52,34 @@ const LoginPageBase = ({ token, error, doAttemptLogin }) => {
             <IonCardTitle class='ion-text-center'>Login</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
-            <IonList>
-              <IonItem>
-                <IonLabel position='floating' color='primary'>
-                  Username
-                </IonLabel>
-                <IonInput
-                  type='text'
-                  value={username}
-                  onInput={e => setUsername(e.target.value)}
-                />
-              </IonItem>
-              <IonItem>
-                <IonLabel position='floating' color='primary'>
-                  Password
-                </IonLabel>
-                <IonInput
-                  type='password'
-                  value={password}
-                  onInput={e => setPassword(e.target.value)}
-                />
-              </IonItem>
-              {error && <IonItem color='danger'>{error.message}</IonItem>}
-              <IonButton
-                expand='block'
-                color='primary'
-                onClick={() => doAttemptLogin(username, password)}
-              >
-                Log In
-              </IonButton>
-            </IonList>
+            <form onSubmit={e => logIn(e)}>
+              <IonList>
+                <IonItem>
+                  <IonLabel position='floating' color='primary'>
+                    Username
+                  </IonLabel>
+                  <IonInput
+                    type='text'
+                    value={username}
+                    onInput={e => setUsername(e.target.value)}
+                  />
+                </IonItem>
+                <IonItem>
+                  <IonLabel position='floating' color='primary'>
+                    Password
+                  </IonLabel>
+                  <IonInput
+                    type='password'
+                    value={password}
+                    onInput={e => setPassword(e.target.value)}
+                  />
+                </IonItem>
+                {error && <IonItem color='danger'>{error.message}</IonItem>}
+                <IonButton expand='block' color='primary' type='submit'>
+                  Log In
+                </IonButton>
+              </IonList>
+            </form>
           </IonCardContent>
         </IonCard>
       </IonContent>
