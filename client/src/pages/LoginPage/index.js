@@ -23,7 +23,7 @@ import {
 import { attemptLogin } from '../../redux/actions/authActions';
 import { TODOLIST_ROUTE } from '../../constants/routes';
 
-const LoginPageBase = ({ token, loading, error, doAttemptLogin }) => {
+const LoginPageBase = ({ token, error, doAttemptLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -83,7 +83,6 @@ const LoginPageBase = ({ token, loading, error, doAttemptLogin }) => {
 
 // TODO: Wire Up Redux
 const mapState = state => ({
-  loading: state.auth.loading,
   error: state.auth.error,
   token: state.auth.token
 });
