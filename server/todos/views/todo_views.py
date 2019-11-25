@@ -50,4 +50,3 @@ class TodoDetailView(APIView):
         todo = self.get_todo(pk)
         todo.delete()
         return Response(status=HTTP_204_NO_CONTENT)
-        
