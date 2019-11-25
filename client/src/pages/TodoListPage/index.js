@@ -11,7 +11,8 @@ import {
   IonItem,
   IonLabel,
   IonInput,
-  IonButton
+  IonButton,
+  IonText
 } from '@ionic/react';
 import { connect } from 'react-redux';
 
@@ -44,6 +45,13 @@ const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        {error && (
+          <IonCard>
+            <IonCardContent>
+              <IonText color='danger'>{error}</IonText>
+            </IonCardContent>
+          </IonCard>
+        )}
         <IonCard>
           <IonCardContent className='ion-text-center'>
             <form onSubmit={e => onTodoSubmit(e)}>
