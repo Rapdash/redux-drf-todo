@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_400_BAD_REQUEST
+from rest_framework.permissions import IsAuthenticated
 from django.http import Http404
 
 from todos.models.todo_model import Todo
@@ -10,6 +11,8 @@ class TodoListView(APIView):
     """
     Create a todo or get all todos associated with your account
     """
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, format=None):
         todos = Todo.objects.filter(owner=request.user.pk)
         serializer = TodoSerializer(todos, many=True)
@@ -24,8 +27,9 @@ class TodoListView(APIView):
 
 class TodoDetailView(APIView):
     """
-    Interact with individual Todos
+    Interact with individual Todos (PUT / DELETE)
     """
+    permission_classes = [IsAuthenticated]
     def get_todo(self, pk):
         try:
             return Todo.objects.get(pk=pk)
