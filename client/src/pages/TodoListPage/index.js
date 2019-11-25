@@ -28,6 +28,8 @@ const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
   const onTodoSubmit = e => {
     e.preventDefault();
     doAddTodo(newTodoTitle, newTodoBody, token);
+    setNewTodoBody('');
+    setNewTodoTitle('');
   };
 
   return (
@@ -52,7 +54,7 @@ const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
                   <IonInput
                     type='text'
                     value={newTodoTitle}
-                    onChange={e => setNewTodoTitle(e.target.value)}
+                    onInput={e => setNewTodoTitle(e.target.value)}
                   />
                 </IonItem>
                 <IonItem>
@@ -66,7 +68,7 @@ const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
                   />
                 </IonItem>
               </IonList>
-              <IonButton>Submit</IonButton>
+              <IonButton type='submit'>Submit</IonButton>
             </form>
           </IonCardContent>
         </IonCard>
