@@ -14,11 +14,11 @@ export const TodoCard = ({ todo, checkOffTodo, deleteTodo, token }) => (
     </IonCardHeader>
     <IonCardContent className='ion-text-center'>
       <p>{todo.body}</p>
-      <IonButton color='primary' onClick={checkOffTodo(todo, token)}>
+      <IonButton color='primary' onClick={() => checkOffTodo(todo, token)}>
         {todo.checked_off ? 'Completed' : 'Not Completed'}
       </IonButton>
-      <IonButton color='danger' onClick={deleteTodo(todo, token)}>
-        {todo.checked_off ? 'Completed' : 'Not Completed'}
+      <IonButton color='danger' onClick={() => deleteTodo(todo, token)}>
+        Delete Todo
       </IonButton>
     </IonCardContent>
   </IonCard>
