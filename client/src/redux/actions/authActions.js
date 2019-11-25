@@ -10,7 +10,6 @@ import {
 } from '../constants/authConstants';
 
 export const attemptLogin = (username, password) => (dispatch, getState) => {
-  console.log('test');
   dispatch({ type: LOGIN_ATTEMPT });
   Axios.post(`http://localhost:8000/token/`, { username, password })
     .then(res => {
