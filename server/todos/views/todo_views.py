@@ -6,6 +6,7 @@ from django.http import Http404
 
 from todos.models.todo_model import Todo
 from todos.serializers import TodoSerializer
+from todos.permissions import IsOwner
 
 class TodoListView(APIView):
     """
@@ -29,7 +30,7 @@ class TodoDetailView(APIView):
     """
     Interact with individual Todos (PUT / DELETE)
     """
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsOwner]
     def get_todo(self, pk):
         try:
             return Todo.objects.get(pk=pk)
