@@ -10,8 +10,9 @@ import {
 } from '../constants/authConstants';
 
 export const attemptLogin = (username, password) => (dispatch, getState) => {
+  console.log('test');
   dispatch({ type: LOGIN_ATTEMPT });
-  Axios.post(`${process.env.API_ROOT_ENDPOINT}/token`, { username, password })
+  Axios.post(`http://localhost:8000/token/`, { username, password })
     .then(res => {
       console.log(res.data);
       dispatch({
@@ -20,7 +21,7 @@ export const attemptLogin = (username, password) => (dispatch, getState) => {
       });
     })
     .catch(error => {
-      console.log(error);
+      console.log(error.message);
       dispatch({
         type: LOGIN_FAILURE,
         payload: { error: error.response.data }
