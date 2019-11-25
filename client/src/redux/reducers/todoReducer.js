@@ -42,8 +42,8 @@ export const todoReducer = (state = initialState, action) => {
 
     case CHECK_OFF_SUCCESS:
       const postCheckOffList = state.list.map(todo => {
-        if (todo.id === action.payload.id) {
-          return { ...todo, checked_off: !todo.checked_off };
+        if (todo.id === action.payload.todo.id) {
+          return action.payload.todo;
         }
         return todo;
       });
