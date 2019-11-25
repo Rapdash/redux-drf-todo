@@ -1,3 +1,5 @@
+import Axios from 'axios';
+
 import {
   LOGIN_ATTEMPT,
   LOGIN_FAILURE,
@@ -6,8 +8,6 @@ import {
   SIGNUP_FAILURE,
   SIGNUP_SUCCESS
 } from '../constants/authConstants';
-
-import Axios from 'axios';
 
 export const attemptLogin = (username, password) => (dispatch, getState) => {
   dispatch({ type: LOGIN_ATTEMPT });
