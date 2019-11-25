@@ -24,11 +24,26 @@ import {
 } from '../../redux/actions/todoActions';
 import { TodoCard } from './TodoCard';
 
-const renderTodoCards = list => {
-  return list.map(todo => <TodoCard key={todo.id} todo={todo} />);
+const renderTodoCards = (list, deleteTodo, checkOffTodo) => {
+  return list.map(todo => (
+    <TodoCard
+      deleteTodo={deleteTodo}
+      checkOffTodo={checkOffTodo}
+      key={todo.id}
+      todo={todo}
+    />
+  ));
 };
 
-const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
+const TodoListPageBase = ({
+  doGetTodos,
+  doAddTodo,
+  doDeleteTodo,
+  doCheckOffTodo,
+  token,
+  list,
+  error
+}) => {
   const [newTodoTitle, setNewTodoTitle] = useState('');
   const [newTodoBody, setNewTodoBody] = useState('');
   useEffect(() => {
@@ -86,7 +101,7 @@ const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
             </form>
           </IonCardContent>
         </IonCard>
-        {renderTodoCards(list)}
+        {renderTodoCards(list, doDeleteTodo, doCheckOffTodo)}
       </IonContent>
     </IonPage>
   );
