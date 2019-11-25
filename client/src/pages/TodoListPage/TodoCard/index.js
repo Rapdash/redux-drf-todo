@@ -7,14 +7,17 @@ import {
   IonButton
 } from '@ionic/react';
 
-export const TodoCard = ({ todo }) => (
+export const TodoCard = ({ todo, checkOffTodo, deleteTodo, token }) => (
   <IonCard>
     <IonCardHeader color={todo.checked_off ? 'success' : 'danger'}>
       <IonCardTitle className='ion-text-center'>{todo.title}</IonCardTitle>
     </IonCardHeader>
     <IonCardContent className='ion-text-center'>
       <p>{todo.body}</p>
-      <IonButton color='primary'>
+      <IonButton color='primary' onClick={checkOffTodo(todo, token)}>
+        {todo.checked_off ? 'Completed' : 'Not Completed'}
+      </IonButton>
+      <IonButton color='danger' onClick={deleteTodo(todo, token)}>
         {todo.checked_off ? 'Completed' : 'Not Completed'}
       </IonButton>
     </IonCardContent>
