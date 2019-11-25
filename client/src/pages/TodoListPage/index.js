@@ -16,7 +16,13 @@ import {
   IonButton
 } from '@ionic/react';
 import { connect } from 'react-redux';
+
 import { getTodos, addTodo } from '../../redux/actions/todoActions';
+import { TodoCard } from './TodoCard';
+
+const renderTodoCards = list => {
+  return list.map(todo => <TodoCard key={todo.id} todo={todo} />);
+};
 
 const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
   const [newTodoTitle, setNewTodoTitle] = useState('');
@@ -41,9 +47,6 @@ const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
       </IonHeader>
       <IonContent>
         <IonCard>
-          <IonCardHeader>
-            <IonCardTitle className='ion-text-center'>Add Todo:</IonCardTitle>
-          </IonCardHeader>
           <IonCardContent className='ion-text-center'>
             <form onSubmit={e => onTodoSubmit(e)}>
               <IonList>
@@ -68,10 +71,11 @@ const TodoListPageBase = ({ doGetTodos, doAddTodo, token, list, error }) => {
                   />
                 </IonItem>
               </IonList>
-              <IonButton type='submit'>Submit</IonButton>
+              <IonButton type='submit'>Add Todo</IonButton>
             </form>
           </IonCardContent>
         </IonCard>
+        {renderTodoCards(list)}
       </IonContent>
     </IonPage>
   );
