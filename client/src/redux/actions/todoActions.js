@@ -50,7 +50,10 @@ export const checkOffTodo = (todo, token) => (dispatch, getState) => {
   fetch(`http://localhost:8000/${todo.id}`, {
     method: 'PUT',
     body: JSON.stringify({ ...todo, checked_off: !todo.checked_off }),
-    headers: { Authorization: 'Bearer ' + token }
+    headers: {
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json'
+    }
   })
     .then(res => {
       res.json().then(data => {
