@@ -16,7 +16,7 @@ export const addTodo = (title, body, token) => (dispatch, getState) => {
   Axios.post(
     'http://localhost:8000/',
     { title, body },
-    { headers: { authentication: token } }
+    { headers: { Authorization: 'Token ' + token } }
   )
     .then(res => {
       dispatch({ type: ADD_TODO_SUCCESS, payload: { todo: res.data } });
@@ -27,9 +27,13 @@ export const addTodo = (title, body, token) => (dispatch, getState) => {
 };
 
 export const getTodos = token => (dispatch, getState) => {
-  Axios.get('http://localhost:8000', { headers: { authentication: token } })
+  fetch('http://localhost:8000', {
+    headers: { Authorization: 'Bearer ' + token }
+  })
     .then(res => {
-      dispatch({ type: GET_TODOS_SUCCESS, payload: { todos: res.data } });
+      res.json().then(data => {
+        dispatch({ type: GET_TODOS_SUCCESS, payload: { todos: data } });
+      });
     })
     .catch(error => {
       dispatch({ type: GET_TODOS_FAILURE, payload: { error } });
