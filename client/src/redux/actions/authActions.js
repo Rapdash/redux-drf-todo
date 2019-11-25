@@ -14,7 +14,6 @@ export const attemptLogin = (username, password) => (dispatch, getState) => {
   dispatch({ type: LOGIN_ATTEMPT });
   Axios.post(`http://localhost:8000/token/`, { username, password })
     .then(res => {
-      console.log(res.data);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: { token: res.data.access }
