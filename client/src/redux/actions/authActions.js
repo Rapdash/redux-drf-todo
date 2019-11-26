@@ -12,7 +12,10 @@ import {
 
 export const attemptLogin = (username, password) => (dispatch, getState) => {
   dispatch({ type: LOGIN_ATTEMPT });
-  Axios.post(`http://localhost:8000/token/`, { username, password })
+  Axios.post(`https://fathomless-forest-63964.herokuapp.com/token/`, {
+    username,
+    password
+  })
     .then(res => {
       dispatch({
         type: LOGIN_SUCCESS,
